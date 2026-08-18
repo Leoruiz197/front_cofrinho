@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INFSEC | Cofrinhos</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <pre id="startup-error" hidden></pre>
+    <script>
+      function showStartupError(event) {
+        const target = document.getElementById('startup-error')
+        target.hidden = false
+        target.textContent = `Falha ao carregar o front:\n${event.reason?.stack || event.error?.stack || event.message || event.reason}`
+      }
+      window.addEventListener('error', showStartupError)
+      window.addEventListener('unhandledrejection', showStartupError)
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

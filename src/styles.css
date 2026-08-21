@@ -19,6 +19,7 @@ label { display: grid; gap: 7px; font-size: .8rem; font-weight: 700; letter-spac
 input, select, button { border-radius: 10px; padding: 11px; border: 1px solid #a8b9cb; background: #fff; color: #102034; }
 button { font-weight: 800; background: var(--accent); border-color: var(--accent); text-transform: uppercase; font-size: .72rem; letter-spacing: .05em; }
 .quiet-button { background: transparent; border-color: #8da0b8; color: inherit; }
+.danger-button { background: #b42318; border-color: #b42318; color: white; }
 .status { display: inline-flex; align-items: center; gap: 7px; border: 1px solid currentColor; border-radius: 99px; padding: 7px 10px; font-size: .75rem; font-weight: 800; opacity: .7; white-space: nowrap; }
 .status i, .online-dot, .offline-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; background: #d36a5b; }
 .status.online { color: #15975a; opacity: 1; }
@@ -46,10 +47,14 @@ button { font-weight: 800; background: var(--accent); border-color: var(--accent
 .manager-layout, .login-layout { max-width: 1120px; margin: auto; }
 .manager-card { background: #fff; border: 1px solid #d4dfec; border-radius: 16px; padding: 18px; box-shadow: 0 12px 30px #294d7d16; }
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 14px; }
+.top-section { margin-bottom: 14px; }
+.generator-card { display: flex; justify-content: space-between; align-items: end; gap: 14px; margin-bottom: 14px; }
+.generator-grid { display: grid; grid-template-columns: 150px 110px; align-items: end; gap: 10px; }
 .manager-columns { display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; margin-bottom: 14px; }
 .section-heading { display: flex; justify-content: space-between; align-items: start; gap: 12px; margin-bottom: 15px; }
 .safe-detail { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; padding: 12px; border-radius: 10px; background: #f1f6fc; font-size: .84rem; margin-bottom: 14px; }
 .safe-detail code { width: 100%; overflow-wrap: anywhere; color: #47627f; }
+.command-scope { margin-bottom: 10px; }
 .command-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .command-grid button { background: #e6effb; border-color: #cadcf3; color: #24548b; }
 .controls { display: grid; gap: 12px; margin-top: 14px; }
@@ -57,16 +62,21 @@ button { font-weight: 800; background: var(--accent); border-color: var(--accent
 .checkbox-label { display: flex; align-items: center; gap: 8px; }
 .checkbox-label input { width: auto; }
 .team-list { display: grid; gap: 8px; max-height: 520px; overflow: auto; padding-right: 4px; }
-.team-row { display: grid; grid-template-columns: 32px 86px minmax(120px, 1fr) 46px; align-items: center; gap: 10px; padding: 8px; border-radius: 10px; background: #f5f8fc; }
+.team-row { display: grid; grid-template-columns: 32px 86px minmax(120px, 1fr) minmax(180px, .8fr) 46px 36px; align-items: center; gap: 10px; padding: 8px; border-radius: 10px; background: #f5f8fc; }
 .team-row .color-token { width: 24px; height: 24px; }
 .team-row code { font-size: .75rem; color: #47627f; }
 .team-row input { min-width: 0; padding: 8px; }
 .team-row input[type='color'] { padding: 3px; height: 37px; }
+.team-secrets { display: flex; flex-wrap: wrap; gap: 5px; font-family: ui-monospace, monospace; font-size: .72rem; color: #47627f; }
+.team-secrets span { border: 1px solid #d4dfec; border-radius: 7px; padding: 4px 6px; background: #fff; }
+.team-secrets b { color: #102034; }
+.remove-team { width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border-color: #f0c6c1; background: #fff1ef; color: #b42318; font-size: 1.1rem; line-height: 1; }
 .header-actions { display: flex; align-items: center; gap: 8px; }
+.manager-message { margin-top: 7px; font-size: .86rem; color: #47627f; }
 .login-layout { min-height: calc(100vh - 100px); display: grid; place-items: center; }
 .login-card { width: min(100%, 420px); display: grid; gap: 14px; }
 .login-card h1 { margin-bottom: 8px; }
 .login-card .primary { background: #146cf5; color: white; }
 .form-error { color: #b42318; font-size: .86rem; }
-@media (max-width: 720px) { .app { padding: 14px; } .app > nav { margin-bottom: 20px; } .manager-columns { grid-template-columns: 1fr; } .command-grid { grid-template-columns: repeat(2, 1fr); } .team-row { grid-template-columns: 28px 72px 1fr 42px; gap: 7px; } .toolbar { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 720px) { .app { padding: 14px; } .app > nav { margin-bottom: 20px; } .manager-columns { grid-template-columns: 1fr; } .command-grid { grid-template-columns: repeat(2, 1fr); } .team-row { grid-template-columns: 28px 72px 1fr 42px 34px; gap: 7px; } .team-secrets { grid-column: 1 / -1; } .toolbar, .generator-card { align-items: flex-start; flex-direction: column; } .generator-grid { width: 100%; grid-template-columns: 1fr 110px; } }
 @media (max-width: 480px) { header { align-items: stretch; flex-direction: column; } .header-actions { justify-content: space-between; } .target-row, .code-row { align-items: stretch; flex-direction: column; } .code-row button { min-height: 48px; } .color-token { align-self: flex-end; } .section-heading { align-items: stretch; flex-direction: column; } }
